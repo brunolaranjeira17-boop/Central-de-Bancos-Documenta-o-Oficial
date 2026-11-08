@@ -1,0 +1,6 @@
+{
+  "name": "Verde Norte Soluções - Extranet & Intranet",
+  "description": "Sistema integrado de Extranet (Central de Bancos e Documentos) e Intranet (Metas Financeiras, Produção e KPIs) para Verde Norte Soluções sob a identidade Darkroom Studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

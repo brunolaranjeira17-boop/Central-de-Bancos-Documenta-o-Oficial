@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #0b0b0d;
+    --bg-elevated: #121214;
+    --card-bg: #17171a;
+    --card-hover: #1c1c20;
+    --text-main: #f2efe8;
+    --text-sec: #a09b93;
+    --text-muted: #6b6660;
+
+    --amber-main: #e8a54b;
+    --amber-hover: #f0b45e;
+    --amber-soft: rgba(232, 165, 75, 0.14);
+    --amber-contrast: #1a1208;
+
+    --status-green: #3ecf8e;
+    --status-blue: #6ba3f5;
+    --status-red: #ef6b6b;
+
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-focus: rgba(255, 255, 255, 0.12);
+    --border-amber: rgba(232, 165, 75, 0.35);
+
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-pill: 9999px;
+
+    --transition-snappy: 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Film Grain Texture */
+.darkroom-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Atmospheric Ambient Glows */
+.darkroom-glow-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 650px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 120% 60% at 50% -10%, rgba(232, 165, 75, 0.075), transparent 55%);
+}
+
+.darkroom-glow-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 100% 40% at 50% 110%, rgba(62, 207, 142, 0.04), transparent 50%);
+}
+
+/* Darkroom Primary Button Signature */
+.btn-amber-primary {
+  background: linear-gradient(160deg, #f0b45e, #e8a54b);
+  color: #1a1208;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(232, 165, 75, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-amber-primary:hover {
+  background: linear-gradient(160deg, #f7c57c, #f0b45e);
+  box-shadow: 0 6px 24px rgba(232, 165, 75, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-amber-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(232, 165, 75, 0.2), inset 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Secondary Ghost Darkroom Button */
+.btn-darkroom-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: #f2efe8;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-darkroom-secondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Card Surface Signature */
+.darkroom-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: border-color 180ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.darkroom-card:hover {
+  border-color: var(--border-focus);
+}
+
+.darkroom-card-amber-hover:hover {
+  border-color: var(--border-amber);
+}
+
+/* Slim Glowing Progress Bar */
+.progress-rail {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill-amber-green {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #e8a54b 0%, #3ecf8e 100%);
+  box-shadow: 0 0 8px rgba(232, 165, 75, 0.35);
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress-fill-red {
+  height: 100%;
+  border-radius: 9999px;
+  background: #ef6b6b;
+  box-shadow: 0 0 8px rgba(239, 107, 107, 0.35);
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress-fill-amber {
+  height: 100%;
+  border-radius: 9999px;
+  background: #e8a54b;
+  box-shadow: 0 0 8px rgba(232, 165, 75, 0.35);
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress-fill-green {
+  height: 100%;
+  border-radius: 9999px;
+  background: #3ecf8e;
+  box-shadow: 0 0 8px rgba(62, 207, 142, 0.4);
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Dot pulse animation */
+@keyframes darkroom-dot-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.dot-pulse {
+  animation: darkroom-dot-pulse 2s infinite ease-in-out;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #232328;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #383842;
+}
+
+/* Print Stylesheet for Executive Reports */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0b0b0d !important;
+  }
+  .darkroom-grain,
+  .darkroom-glow-top,
+  .darkroom-glow-bottom,
+  .no-print {
+    display: none !important;
+  }
+  .darkroom-card {
+    background-color: #ffffff !important;
+    border: 1px solid #dcdcdc !important;
+    color: #0b0b0d !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .text-\[\#f2efe8\], .text-white {
+    color: #0b0b0d !important;
+  }
+  .text-\[\#a09b93\], .text-\[\#6b6660\] {
+    color: #555555 !important;
+  }
+}
